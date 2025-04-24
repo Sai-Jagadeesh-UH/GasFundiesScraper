@@ -1,0 +1,10 @@
+dev:
+  Capacity:
+    basePath: ./App
+    downDir: ./App/downs
+    headLess: True
+prod:
+  Capacity:
+    basePath: ./App
+    downDir: ./App/downs
+    headLess: True

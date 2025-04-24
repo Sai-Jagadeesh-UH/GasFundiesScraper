@@ -1,0 +1,74 @@
+POINT_CAPACITY:
+  - Arlington Storage
+  - Cheyenne Plains
+  - Colorado Interstate Gas
+  - Elba Express
+  - El Paso Natural Gas
+  - Horizon Pipeline
+  - KM Illinois Pipeline
+  - KM Louisiana Pipeline
+  - Midcontinent Express
+  - Mojave Pipeline
+  - Natural Gas Pipeline
+  - Sierrita Gas Pipeline
+  - Southern LNG
+  - Southern Natural Gas
+  - Stagecoach Pipeline and Storage
+  - Tennessee Gas Pipeline
+  - TransColorado Gas Transmission
+  - Wyoming Interstate
+  - Young Gas Storage
+SEGMENT_CAPACITY:
+  - Arlington Storage
+  - Cheyenne Plains
+  - Colorado Interstate Gas
+  - Elba Express
+  - El Paso Natural Gas
+  - Horizon Pipeline
+  - KM Illinois Pipeline
+  - KM Louisiana Pipeline
+  - Midcontinent Express
+  - Mojave Pipeline
+  - Natural Gas Pipeline
+  - Sierrita Gas Pipeline
+  - Southern Natural Gas
+  - Stagecoach Pipeline and Storage
+  - Tennessee Gas Pipeline
+  - TransColorado Gas Transmission
+  - Wyoming Interstate
+STORAGE_CAPACITY:
+  - Arlington Storage
+  - Colorado Interstate Gas
+  - Natural Gas Pipeline
+  - Southern LNG
+  - Southern Natural Gas
+  - Stagecoach Pipeline and Storage
+  - Tennessee Gas Pipeline
+  - Young Gas Storage
+NO_NOTICE_ACTIVITY:
+  - Arlington Storage
+  - Cheyenne Plains
+  - Colorado Interstate Gas
+  - Elba Express
+  - El Paso Natural Gas
+  - Horizon Pipeline
+  - KM Illinois Pipeline
+  - KM Louisiana Pipeline
+  - Midcontinent Express
+  - Mojave Pipeline
+  - Natural Gas Pipeline
+  - Sierrita Gas Pipeline
+  - Southern LNG
+  - Southern Natural Gas
+  - Stagecoach Pipeline and Storage
+  - Tennessee Gas Pipeline
+  - TransColorado Gas Transmission
+  - Wyoming Interstate
+  - Young Gas Storage
+CYCLES:
+  - BEST AVAILABLE
+  - TIMELY
+  - EVENING
+  - INTRADAY 1
+  - INTRADAY 2
+  - INTRADAY 3

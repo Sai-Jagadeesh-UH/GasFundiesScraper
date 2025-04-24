@@ -1,0 +1,20 @@
+PIPELINE_NAMES:
+  Arlington Storage: ARLS
+  Cheyenne Plains: CP
+  Colorado Interstate Gas: CIG
+  Elba Express: EEC
+  El Paso Natural Gas: EPNG
+  Horizon Pipeline: HORZ
+  KM Illinois Pipeline: KMIL
+  KM Louisiana Pipeline: KMLP
+  Midcontinent Express: MEP
+  Mojave Pipeline: MOPC
+  Natural Gas Pipeline: NGPL
+  Sierrita Gas Pipeline: SGP
+  Southern LNG: SLNG
+  Southern Natural Gas: SNG
+  Stagecoach Pipeline and Storage: STAG
+  Tennessee Gas Pipeline: TGPD
+  TransColorado Gas Transmission: TCP
+  Wyoming Interstate: WIC
+  Young Gas Storage: YGS

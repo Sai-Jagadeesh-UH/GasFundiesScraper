@@ -1,0 +1,92 @@
+PointCapacity:
+  basePath: ./
+  downDir: ./downs/PointCapacity
+  headLess: True
+  fileType:
+  pipeLine: NGPL
+  cycleSelector: BEST AVAILABLE
+  pipeGroups:
+    - ARLS
+    - CP
+    - CIG
+    - EEC
+    - EPNG
+    - HORZ
+    - KMIL
+    - KMLP
+    - MEP
+    - MOPC
+    - NGPL
+    - SGP
+    - SLNG
+    - SNG
+    - STAG
+    - TGPD
+    - TCP
+    - WIC
+    - YGS
+SegmentCapacity:
+  basePath: ./
+  downDir: ./downs/SegmentCapacity
+  headLess: True
+  pipeLine: NGPL
+  cycleSelector: BEST AVAILABLE
+  pipeGroups:
+    - ARLS
+    - CP
+    - CIG
+    - EEC
+    - EPNG
+    - HORZ
+    - KMIL
+    - KMLP
+    - MEP
+    - MOPC
+    - NGPL
+    - SGP
+    - SNG
+    - STAG
+    - TGPD
+    - TCP
+    - WIC
+StorageCapacity:
+  basePath: ./
+  downDir: ./downs/StorageCapacity
+  headLess: True
+  pipeLine: NGPL
+  cycleSelector: BEST AVAILABLE
+  pipeGroups:
+    - ARLS
+    - CIG
+    - NGPL
+    - SLNG
+    - SNG
+    - STAG
+    - TGPD
+    - YGS
+NoNoticeActivity:
+  basePath: ./
+  downDir: ./downs/NoNoticeActivityCapacity
+  headLess: True
+  pipeLine: NGPL
+  fileType:
+  pipeGroups:
+    - ARLS
+    - CP
+    - CIG
+    - EEC
+    - EPNG
+    - HORZ
+    - KMIL
+    - KMLP
+    - MEP
+    - MOPC
+    - NGPL
+    - SGP
+    - SLNG
+    - SNG
+    - STAG
+    - TGPD
+    - TCP
+    - WIC
+    - YGS

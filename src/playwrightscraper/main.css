@@ -1,0 +1,24 @@
+.taipy-part.container-logo {
+	padding: 0px;
+	background-color: #21274a;
+}
+
+.taipy-button {
+	width: 60%;
+}
+.container {
+	margin: 0px;
+	background-color: #21274a;
+}
+.taipy-image {
+	padding: 0px;
+	margin: 0px;
+}
+.on-run {
+	margin-left: 10%;
+}
+/* .taipy-selector.fullselector {
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+} */
