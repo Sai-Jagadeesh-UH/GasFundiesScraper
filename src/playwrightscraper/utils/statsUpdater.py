@@ -1,7 +1,9 @@
 import pandas as pd
 from datetime import datetime
-from pathlib import Path
 import os
+from botConfig import PATH_LIST
+
+RUNSTATS_PATH = PATH_LIST["RUNSTATS_PATH"]
 
 
 # # Create an empty DataFrame with the defined schema
@@ -11,7 +13,7 @@ import os
 
 def startStats(scrapetype: str, configs):
 
-    file_name = (Path("./") / "downs" / "RunStats" /
+    file_name = (RUNSTATS_PATH /
                  rf"{datetime.now().strftime(r'%Y_%m_%d')}.csv")
     if (file_name.exists()):
         df = pd.read_csv(file_name)
@@ -46,7 +48,7 @@ def startStats(scrapetype: str, configs):
 def endStats(status: str):
 
     filelist = [(f, os.path.getctime(f))
-                for f in (Path("./") / "downs" / "RunStats").iterdir()]
+                for f in RUNSTATS_PATH.iterdir()]
     filelist.sort(key=lambda item: item[1], reverse=True)
 
     df = pd.read_csv(filelist[0][0])
@@ -59,7 +61,7 @@ def endStats(status: str):
 
 def getStats():
     filelist = [(f, os.path.getctime(f))
-                for f in (Path("./") / "downs" / "RunStats").iterdir()]
+                for f in RUNSTATS_PATH.iterdir()]
     filelist.sort(key=lambda item: item[1], reverse=True)
 
     return pd.read_csv(filelist[0][0])

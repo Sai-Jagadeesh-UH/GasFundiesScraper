@@ -1,6 +1,5 @@
-from taipy.gui import Gui, State, notify
 import taipy.gui.builder as tgb
-from datetime import datetime, date, timedelta
+from datetime import date, timedelta
 
 ondate = date.today()
 mindate = date.today() - timedelta(days=2)

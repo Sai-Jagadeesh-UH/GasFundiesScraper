@@ -1,13 +1,45 @@
 from pathlib import Path
 
-# /Users/saijagadeeshyadavalli/Coding/PlayWrightScraper/src/configs/baseconfig.yml
+TOP_PATH = Path(__file__).parent.parent.parent
 
-BASE_FILE_PATH = Path(__file__).parent.parent.parent / \
-    r"./configs" / r"./baseconfig.yml"
+LOGS_PATH = TOP_PATH.parent / r"logs"
 
-TEMP_FILE = Path(__file__).parent.parent.parent / \
-    r"./configs" / r"./CapTemp.yml"
+CONFIGS_PATH = TOP_PATH / r"configs"
 
+BASE_FILE_PATH = CONFIGS_PATH / r"baseconfig.yml"
+
+TEMP_FILE = CONFIGS_PATH / r"CapTemp.yml"
+
+AZUREKEY_FILE = CONFIGS_PATH / r"azureConnection.yml"
+
+IMAGES_PATH = TOP_PATH / r"images"
+
+DOWNS_PATH = TOP_PATH / r"downs"
+
+POINTCAPACITY_PATH = DOWNS_PATH / r"PointCapacity"
+
+SEGMENTCAPACITY_PATH = DOWNS_PATH / r"SegmentCapacity"
+
+STORAGECAPACITY_PATH = DOWNS_PATH / r"StorageCapacity"
+
+RUNSTATS_PATH = DOWNS_PATH / r"RunStats"
+
+NONOTICEACTIVITY_PATH = DOWNS_PATH / r"NoNoticeActivity"
+
+PATH_LIST = {
+    "CONFIGS_PATH": CONFIGS_PATH,
+    "BASE_FILE_PATH": BASE_FILE_PATH,
+    "TEMP_FILE": TEMP_FILE,
+    "IMAGES_PATH": IMAGES_PATH,
+    "DOWNS_PATH": DOWNS_PATH,
+    "POINTCAPACITY_PATH": POINTCAPACITY_PATH,
+    "SEGMENTCAPACITY_PATH": SEGMENTCAPACITY_PATH,
+    "STORAGECAPACITY_PATH": STORAGECAPACITY_PATH,
+    "RUNSTATS_PATH": RUNSTATS_PATH,
+    "NONOTICEACTIVITY_PATH": NONOTICEACTIVITY_PATH,
+    "AZUREKEY_FILE": AZUREKEY_FILE,
+    "LOGS_PATH": LOGS_PATH
+}
 
 PIPELINES_NAMES = {
     'Arlington Storage': "ARLS",

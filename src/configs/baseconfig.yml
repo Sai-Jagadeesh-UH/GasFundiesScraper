@@ -1,6 +1,5 @@
 PointCapacity:
-  basePath: ./
-  downDir: ./downs/PointCapacity
+  downDir: POINTCAPACITY_PATH
   headLess: True
   fileType:
   pipeLine: NGPL
@@ -26,8 +25,7 @@ PointCapacity:
     - WIC
     - YGS
 SegmentCapacity:
-  basePath: ./
-  downDir: ./downs/SegmentCapacity
+  downDir: SEGMENTCAPACITY_PATH
   headLess: True
   pipeLine: NGPL
   cycleSelector: BEST AVAILABLE
@@ -50,8 +48,7 @@ SegmentCapacity:
     - TCP
     - WIC
 StorageCapacity:
-  basePath: ./
-  downDir: ./downs/StorageCapacity
+  downDir: STORAGECAPACITY_PATH
   headLess: True
   pipeLine: NGPL
   cycleSelector: BEST AVAILABLE
@@ -65,8 +62,7 @@ StorageCapacity:
     - TGPD
     - YGS
 NoNoticeActivity:
-  basePath: ./
-  downDir: ./downs/NoNoticeActivityCapacity
+  downDir: NONOTICEACTIVITY_PATH
   headLess: True
   pipeLine: NGPL
   fileType:

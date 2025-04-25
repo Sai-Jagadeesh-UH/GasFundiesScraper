@@ -1,7 +1,5 @@
-from taipy.gui import Gui, State, notify
+from taipy.gui import notify
 import taipy.gui.builder as tgb
-from datetime import datetime, date, timedelta
-import pandas as pd
 from utils import getStats
 
 

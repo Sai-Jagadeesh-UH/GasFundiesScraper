@@ -3,7 +3,7 @@ import pathlib
 from datetime import date
 from time import sleep
 from utils import log
-from botConfig import PointCapConfig
+from botConfig import PointCapConfig, PATH_LIST
 from utils import Custom_Error, startStats, endStats
 import sys
 from azurepush import pushFiles
@@ -17,10 +17,7 @@ class PointCapBot:
         for key, val in config.items():
             setattr(self, key, val)
 
-        if (not hasattr(self, "basePath")):
-            log("basepath missing setting it")
-            self.basePath = pathlib.Path("./")
-            self.downDir = self.basePath / pathlib.Path("./downs/PoinCapacity")
+        self.downDir = PATH_LIST[self.downDir]
 
         if (not hasattr(self, "fileType")):
             log(f"fileType missing setting it to {None}")
@@ -68,7 +65,7 @@ class PointCapBot:
                             isSuccess = "Failed"
                             raise Custom_Error(e, sys)
                         finally:
-                            pass
+                            log(f"Bot run {isSuccess}")
         # pushing files to adls
             endStats(isSuccess)
             pushFiles("point")
@@ -103,7 +100,7 @@ class PointCapBot:
                             isSuccess = "Failed"
                             raise Custom_Error(e, sys)
                         finally:
-                            pass
+                            log(f"Bot run {isSuccess}")
         # pushing files to adls
             endStats(isSuccess)
             pushFiles("point")
@@ -136,7 +133,7 @@ class PointCapBot:
                             isSuccess = "Failed"
                             raise Custom_Error(e, sys)
                         finally:
-                            pass
+                            log(f"Bot run {isSuccess}")
             endStats(isSuccess)
             pushFiles("point")
 

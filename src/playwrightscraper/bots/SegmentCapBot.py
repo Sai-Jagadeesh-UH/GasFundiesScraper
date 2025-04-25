@@ -3,7 +3,7 @@ import pathlib
 from datetime import date
 from time import sleep
 from utils import log
-from botConfig import SegmentCapConfig
+from botConfig import SegmentCapConfig, PATH_LIST
 from utils import Custom_Error, startStats, endStats
 import sys
 from azurepush import pushFiles
@@ -18,10 +18,7 @@ class SegmentCapBot:
         for key, val in config.items():
             setattr(self, key, val)
 
-        if (not hasattr(self, "basePath")):
-            log("basepath missing setting it")
-            self.basePath = pathlib.Path(r"./")
-            self.downDir = self.basePath / pathlib.Path(r"/downs/")
+        self.downDir = PATH_LIST[self.downDir]
 
         if (not hasattr(self, "targetDate")):
             log(f"targetDate missing setting it to {date.today()}")
@@ -71,7 +68,7 @@ class SegmentCapBot:
                         isSuccess = "Failed"
                         raise Custom_Error(e, sys)
                     finally:
-                        pass
+                        log(f"Bot run {isSuccess}")
         endStats(isSuccess)
         pushFiles("segment")
 

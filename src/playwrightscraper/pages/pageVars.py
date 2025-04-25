@@ -1,9 +1,10 @@
 import yaml
+from botConfig import PATH_LIST
 
-with open("/Users/saijagadeeshyadavalli/Coding/PlayWrightScraper/src/configs/pipes.yml") as file:
+with open(PATH_LIST["CONFIGS_PATH"] / r"pipes.yml") as file:
     PIPES = yaml.safe_load(file)["PIPELINE_NAMES"]
 
-with open("/Users/saijagadeeshyadavalli/Coding/PlayWrightScraper/src/configs/pipeScrapes.yml") as file:
+with open(PATH_LIST["CONFIGS_PATH"] / r"pipeScrapes.yml") as file:
     PIPE_SCRAPES = yaml.safe_load(file)
 
 

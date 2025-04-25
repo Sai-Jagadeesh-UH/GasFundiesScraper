@@ -3,15 +3,15 @@ from utils import log
 from pathlib import Path
 from datetime import datetime, time, timedelta
 from .azureConnect import logsFolderclient, statsFolderclient, PointCapacityFolderclient, SegmentCapacityFolderclient, StorageCapacityFolderclient, NoNotceActivityFolderclient
-
+from botConfig import PATH_LIST
 
 foldersDict = {
-    "logs": ((Path("./") / "logs"), logsFolderclient),
-    "point": ((Path("./") / "downs" / "PointCapacity"), PointCapacityFolderclient),
-    "segment": ((Path("./") / "downs" / "SegmentCapacity"), SegmentCapacityFolderclient),
-    "storage": ((Path("./") / "downs" / "StorageCapacity"), StorageCapacityFolderclient),
-    "nonotice": ((Path("./") / "downs" / "NoNoticeActivity"), NoNotceActivityFolderclient),
-    "stats": ((Path("./") / "downs" / "RunStats"), statsFolderclient),
+    "logs": (PATH_LIST["LOGS_PATH"], logsFolderclient),
+    "point": (PATH_LIST["POINTCAPACITY_PATH"], PointCapacityFolderclient),
+    "segment": (PATH_LIST["SEGMENTCAPACITY_PATH"], SegmentCapacityFolderclient),
+    "storage": (PATH_LIST["STORAGECAPACITY_PATH"], StorageCapacityFolderclient),
+    "nonotice": (PATH_LIST["NONOTICEACTIVITY_PATH"], NoNotceActivityFolderclient),
+    "stats": (PATH_LIST["RUNSTATS_PATH"], statsFolderclient),
 }
 
 

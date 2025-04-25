@@ -8,10 +8,13 @@ from azure.storage.filedatalake import (
 )
 from azure.identity import DefaultAzureCredential
 from pathlib import Path
+from botConfig import PATH_LIST
+
+AZUREKEY_FILE = PATH_LIST["AZUREKEY_FILE"]
 
 
 def getKey():
-    with open(Path("./") / "src" / "configs" / "azureConnection.yml") as file:
+    with open(AZUREKEY_FILE) as file:
         temp = yaml.safe_load(file)
         return temp["key"], temp["account_url"]
 

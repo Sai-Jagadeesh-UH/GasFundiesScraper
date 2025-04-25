@@ -1,6 +1,9 @@
 from typing import Literal
 import yaml
-from .configVars import BASE_FILE_PATH, TEMP_FILE
+from .configVars import PATH_LIST
+
+BASE_FILE_PATH = PATH_LIST["BASE_FILE_PATH"]
+TEMP_FILE = PATH_LIST["TEMP_FILE"]
 
 
 def setPointCapConfig(**kwargs) -> dict:

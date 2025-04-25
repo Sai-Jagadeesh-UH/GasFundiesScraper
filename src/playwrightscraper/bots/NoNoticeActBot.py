@@ -1,9 +1,9 @@
 from playwright.sync_api import sync_playwright
-import pathlib
+from pathlib import Path
 from datetime import date, timedelta
 from time import sleep
 from utils import log
-from botConfig import NoNoticeActConfig
+from botConfig import NoNoticeActConfig, PATH_LIST
 from utils import Custom_Error, startStats, endStats
 import sys
 from azurepush import pushFiles
@@ -12,16 +12,14 @@ from azurepush import pushFiles
 class NoNoticeActBot:
 
     def __init__(self):
+
         config = NoNoticeActConfig()
 
         # log(f"""setting Config \n{config}""")
         for key, val in config.items():
             setattr(self, key, val)
 
-        if (not hasattr(self, "basePath")):
-            log("basepath missing setting it")
-            self.basePath = pathlib.Path("./")
-            self.downDir = self.basePath / pathlib.Path("./downs/")
+        self.downDir = PATH_LIST[self.downDir]
 
         if (not hasattr(self, "targetDate")):
             log(f"targetDate missing setting it to {date.today()}")
@@ -31,7 +29,7 @@ class NoNoticeActBot:
             log(f"fileType missing setting it to {None}")
             self.fileType = None
 
-        pathlib.Path(self.downDir).mkdir(exist_ok=True)
+        Path(self.downDir).mkdir(exist_ok=True)
         self.url = rf"https://pipeline2.kindermorgan.com/Capacity/NoNotice.aspx?code={self.pipeLine}"
 
     def scrape(self):
@@ -70,7 +68,7 @@ class NoNoticeActBot:
                             isSuccess = "Failed"
                             raise Custom_Error(e, sys)
                         finally:
-                            pass
+                            log(f"Bot run {isSuccess}")
             endStats(isSuccess)
             pushFiles("nonotice")
             sleep(7)
@@ -103,7 +101,7 @@ class NoNoticeActBot:
                             isSuccess = "Failed"
                             raise Custom_Error(e, sys)
                         finally:
-                            pass
+                            log(f"Bot run {isSuccess}")
             endStats(isSuccess)
             pushFiles("nonotice")
         else:
@@ -134,7 +132,7 @@ class NoNoticeActBot:
                             isSuccess = "Failed"
                             raise Custom_Error(e, sys)
                         finally:
-                            pass
+                            log(f"Bot run {isSuccess}")
             endStats(isSuccess)
             pushFiles("nonotice")
 
@@ -144,7 +142,7 @@ class NoNoticeActBot:
             self.targetDate = date.today() - timedelta(days=4)
         scrapeday = self.targetDate.strftime(r'%m%d%Y')
         fileType = self.fileType
-        downDir = pathlib.Path(self.downDir)
+        downDir = Path(self.downDir)
 
         log(f"scraping No Notice Activity {fileType} file for {scrapeday}")
         with sync_playwright() as p:
