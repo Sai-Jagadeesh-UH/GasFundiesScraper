@@ -6,7 +6,7 @@ from utils import log
 from botConfig import PointCapConfig, PATH_LIST
 from utils import Custom_Error, startStats, endStats
 import sys
-from azurepush import pushFiles
+from azurepush import pushFiles, processFiles
 
 
 class PointCapBot:
@@ -188,5 +188,6 @@ class PointCapBot:
                     download.suggested_filename.split(".", 2)[-1]
                 download.save_as(downDir / filename)
                 log(filename + " saved, pushing to blob")
+                processFiles(downDir / filename)
 
             browser.close()

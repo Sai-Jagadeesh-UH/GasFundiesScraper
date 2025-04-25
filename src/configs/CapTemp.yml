@@ -1,23 +1,14 @@
 cycleSelector: INTRADAY 3
-downDir: SEGMENTCAPACITY_PATH
+downDir: STORAGECAPACITY_PATH
 headLess: true
 pipeGroups:
 - ARLS
-- CP
 - CIG
-- EEC
-- EPNG
-- HORZ
-- KMIL
-- KMLP
-- MEP
-- MOPC
 - NGPL
-- SGP
+- SLNG
 - SNG
 - STAG
 - TGPD
-- TCP
-- WIC
-pipeLine: HORZ
-targetDate: 2025-04-25
+- YGS
+pipeLine: NGPL
+targetDate: 2025-04-03

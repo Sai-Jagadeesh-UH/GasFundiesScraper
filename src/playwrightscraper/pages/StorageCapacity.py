@@ -1,10 +1,15 @@
-from taipy.gui import notify
+from taipy.gui import notify, navigate
 import taipy.gui.builder as tgb
 from datetime import date, timedelta
 from .pageVars import getPipeCode, STORAGE_PIPES, CYCLES
 from bots import StorageCapBot
 from botConfig import setStorageCapConfig
 from azurepush import pushFiles
+
+
+def isActive(x: bool, state):
+    for i in ["pointcap", "segmentcap", "storagecap", "nonoticeactivity"]:
+        state[i].SubmitActive = x
 
 
 def on_page_load(state):
@@ -46,13 +51,16 @@ def onSubmit(state):
 
     notify(state, notification_type="info",
            message=f"Bot is running for {configuration['targetDate']} please wait...")
-    state.SubmitActive = False
+    # state.SubmitActive = False
+    isActive(False, state)
     setStorageCapConfig(**configuration)
     StorageCapBot().scrape()
-    state.SubmitActive = True
+    # state.SubmitActive = True
+    isActive(True, state)
     notify(state, notification_type="info",
            message=f'Scrape for {configuration["cycleSelector"]} {configuration["pipeLine"]} on {configuration["targetDate"]} is complete')
     pushFiles()
+    # navigate(state, "preview")
 
 
 def onRangeSubmit(state):
@@ -81,14 +89,17 @@ def onRangeSubmit(state):
             return
         notify(state, notification_type="info",
                message=f"Bot is running for {configuration['targetDate']} please wait...")
-        state.SubmitActive = False
+        # state.SubmitActive = False
+        isActive(False, state)
         setStorageCapConfig(**configuration)
         StorageCapBot().scrape()
-        state.SubmitActive = True
+        # state.SubmitActive = True
+        isActive(True, state)
         notify(state, notification_type="info",
                message=f'Scrape for {configuration["cycleSelector"]} {configuration["pipeLine"]} on {configuration["targetDate"]} is complete')
         currentdate = currentdate + timedelta(days=1)
         pushFiles()
+        # navigate(state, "preview")
 
 
 singleOpen = True

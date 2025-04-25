@@ -6,7 +6,7 @@ from utils import log
 from botConfig import StorageCapConfig, PATH_LIST
 from utils import Custom_Error, startStats, endStats
 import sys
-from azurepush import pushFiles
+from azurepush import pushFiles, processFiles
 
 
 class StorageCapBot:
@@ -115,5 +115,6 @@ class StorageCapBot:
                     download.suggested_filename.split(".", 2)[-1]
                 download.save_as(downDir / filename)
                 log(filename + " saved")
+                processFiles(downDir / filename)
 
             browser.close()

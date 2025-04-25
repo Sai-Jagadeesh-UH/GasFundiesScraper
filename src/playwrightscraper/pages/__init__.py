@@ -3,4 +3,4 @@ from .PointCapacity import PointCapPage
 from .SegmentCapacity import SegmentCapPage
 from .StorageCapacity import StorageCapPage
 from .NoNoticeActivity import NoNoticeActivityPage
-from .dummyppage import dummyPage
+from .dummyppage import DataPreview

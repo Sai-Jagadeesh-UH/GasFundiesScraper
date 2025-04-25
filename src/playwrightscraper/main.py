@@ -4,8 +4,8 @@ from datetime import datetime, date, timedelta
 from pathlib import Path
 from utils import getStats
 from botConfig import PATH_LIST
-from pages import StatusChecker, PointCapPage, SegmentCapPage, StorageCapPage, NoNoticeActivityPage, dummyPage
-from azurepush import pushFiles
+from pages import StatusChecker, PointCapPage, SegmentCapPage, StorageCapPage, NoNoticeActivityPage, DataPreview
+from azurepush import pushFiles, processFiles
 df = None
 
 
@@ -19,6 +19,20 @@ def on_navigate(state, page_name: str):
         state.df_status.update_content(state, statustable)
         pushFiles()
         return "status"
+    # if page_name == "preview":
+    #     with open(PATH_LIST["TEMP_TXT"], 'w+') as file:
+    #         filename = file.read()
+    #     print(filename)
+    #     state.df = processFiles(Path(filename))
+    #     with tgb.Page() as previewtable:
+    #         with tgb.part(class_name="card"):
+    #             tgb.table(data="{df}", filter=True, sortable=True)
+    #     # pagecontent = Markdown("<|{df}|table|>")
+    #     state.df_preview.update_content(state, previewtable)
+    #     pushFiles()
+    #     return "preview"
+    # else:
+    #     print(state.SubmitActive, page_name)
     return page_name
 
 
@@ -31,7 +45,7 @@ with tgb.Page() as homepage:
                     ("/storagecap", "Storage Capacity"),
                     ("/nonoticeactivity", "No Notice Activity"),
                     ("/status", "Runs Status"),
-                    ("/dummy", "Dummy")
+                    # ("/preview", "Preview")
                     ])
 
     tgb.html("br")
@@ -44,7 +58,7 @@ pagelist = {
     "storagecap": StorageCapPage,
     "nonoticeactivity": NoNoticeActivityPage,
     "status": StatusChecker,
-    "dummy": dummyPage
+    # "preview": DataPreview
     # "/status": None
 }
 # #21274A

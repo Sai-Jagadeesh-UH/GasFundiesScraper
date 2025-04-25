@@ -1,0 +1,3 @@
+,Eff Gas Day/Eff Time,TSP Name,CycleDesc,Loc,Loc Name,Loc/QTI Desc,Design Capacity,Operating Capacity,Total Scheduled Quantity,Operationally Available Capacity,IT,Flow Ind,All Qty Avail,Qty Reason,TimeStamp
+0,4/3/2025 10:00 PM CCT,NATURAL GAS PIPELINE CO.,INTRADAY 3,47422,NGPL/NGPL /STORAGE SYSTEM WIDE                    ,Storage injection quantity,"875,000","875,000","380,773","494,227",N,SI,Y,,2025-04-25 11:29:43
+1,4/3/2025 10:00 PM CCT,NATURAL GAS PIPELINE CO.,INTRADAY 3,47422,NGPL/NGPL /STORAGE SYSTEM WIDE                    ,Storage withdrawal quantity,"3,000,000","3,000,000",0,"3,000,000",N,SW,Y,,2025-04-25 11:29:43

@@ -1,13 +1,15 @@
+from taipy.gui import notify
 import taipy.gui.builder as tgb
-from datetime import date, timedelta
+from utils import getStats
 
-ondate = date.today()
-mindate = date.today() - timedelta(days=2)
-maxdate = date.today() + timedelta(days=2)
 
-with tgb.Page() as dummyPage:
+# df = getStats()
+# print(df)
+
+
+with tgb.Page() as DataPreview:
+    # tgb.text(r"# RunStatus ", mode="md")
+    # tgb.button(label="Refresh", on_action=clickRefresh)
     with tgb.part(class_name="card"):
-        with tgb.part(class_name="card"):
-            tgb.text("### On", mode="md", class_name="on-run")
-            tgb.date(date="{ondate}", min="{mindate}",
-                     max="{maxdate}", propagate=True)
+        # tgb.part(partial="{df_preview}")
+        tgb.text("# Still In Process", mode="md")

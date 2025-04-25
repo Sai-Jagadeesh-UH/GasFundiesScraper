@@ -10,6 +10,8 @@ README.md
 archives/
 logs/
 **/azureConnection.yml
+checker.py
+**/downs/
 
 
 # Byte-compiled / optimized / DLL files
