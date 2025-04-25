@@ -17,8 +17,8 @@ foldersDict = {
 
 def pushFiles(key: str = "logs"):
     folpath, folclient = foldersDict[key]
-    # if (datetime.now().hour > 9):
-    if (datetime.now().hour):
+    if (datetime.now().hour > 9):
+        # if (datetime.now().hour):
         filelist = [(f, os.path.getctime(f))
                     for f in folpath.iterdir()]
         filelist.sort(key=lambda item: item[1], reverse=True)
@@ -27,11 +27,32 @@ def pushFiles(key: str = "logs"):
         with open(file=filelist[0][0], mode=r"rb") as data:
             fileclient.upload_data(data=data, overwrite=True)
         log(f"{filelist[0][0].name} pushed to blob successfully")
-    # else:
-    #     for i in folpath.iterdir():
-    #         fileclient = folclient.get_file_client(i.name)
-    #         with open(file=i, mode=r"rb") as data:
-    #             fileclient.upload_data(data=data, overwrite=True)
-    #         log(f"{i.name} pushed to blob successfully")
-    #         if (datetime.now().hour < 9):
-    #             i.unlink(missing_ok=True)
+    else:
+        if (key == "logs"):
+            filelist = [(f, os.path.getctime(f))
+                        for f in folpath.iterdir()]
+            filelist.sort(key=lambda item: item[1], reverse=True)
+            for i in filelist[1:]:
+                fileclient = folclient.get_file_client(i[0].name)
+                with open(file=i[0], mode=r"rb") as data:
+                    fileclient.upload_data(data=data, overwrite=True)
+                log(f"{i[0].name} pushed to blob successfully")
+                if (datetime.now().hour < 9):
+                    i[0].unlink(missing_ok=True)
+        else:
+            for i in folpath.iterdir():
+                fileclient = folclient.get_file_client(i.name)
+                with open(file=i, mode=r"rb") as data:
+                    fileclient.upload_data(data=data, overwrite=True)
+                log(f"{i.name} pushed to blob successfully")
+                if (datetime.now().hour < 9):
+                    i.unlink(missing_ok=True)
+
+
+def pushStats(statfile):
+    _, folclient = foldersDict["stats"]
+    fileclient = folclient.get_file_client(statfile.name)
+    with open(file=statfile, mode=r"rb") as data:
+        fileclient.upload_data(data=data, overwrite=True)
+    log(f"{statfile.name} pushed to blob successfully")
+    statfile.unlink(missing_ok=True)

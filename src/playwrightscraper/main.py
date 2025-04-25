@@ -3,9 +3,9 @@ import taipy.gui.builder as tgb
 from datetime import datetime, date, timedelta
 from pathlib import Path
 from utils import getStats
-
+from botConfig import PATH_LIST
 from pages import StatusChecker, PointCapPage, SegmentCapPage, StorageCapPage, NoNoticeActivityPage, dummyPage
-
+from azurepush import pushFiles
 df = None
 
 
@@ -17,13 +17,14 @@ def on_navigate(state, page_name: str):
                 tgb.table(data="{df}", filter=True, sortable=True)
         # pagecontent = Markdown("<|{df}|table|>")
         state.df_status.update_content(state, statustable)
+        pushFiles()
         return "status"
     return page_name
 
 
 with tgb.Page() as homepage:
     with tgb.part(class_name="container-logo"):
-        tgb.image((Path("./") / "images" / "gasfundies.webp"))
+        tgb.image((PATH_LIST["IMAGES_PATH"] / r"gasfundies.webp"))
 
     tgb.navbar(lov=[("/pointcap", "Point Capacity"),
                     ("/segmentcap", "Segment Capacity"),

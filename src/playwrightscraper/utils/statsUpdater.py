@@ -2,6 +2,7 @@ import pandas as pd
 from datetime import datetime
 import os
 from botConfig import PATH_LIST
+from azurepush import pushStats
 
 RUNSTATS_PATH = PATH_LIST["RUNSTATS_PATH"]
 
@@ -63,5 +64,12 @@ def getStats():
     filelist = [(f, os.path.getctime(f))
                 for f in RUNSTATS_PATH.iterdir()]
     filelist.sort(key=lambda item: item[1], reverse=True)
-
-    return pd.read_csv(filelist[0][0])
+    df = pd.DataFrame(columns=['Rundate', 'ScrapeType', 'Pipeline',
+                               'Cycle', 'TargetDate',  'StartTime', 'EndTime', 'status', 'Arguments'])
+    for i in filelist:
+        if (len(df) >= 500):
+            pushStats(i)
+            continue
+        df = pd.concat([df, pd.read_csv(i[0])], axis=0, ignore_index=True)
+    df.sort_values(by=['Rundate', 'StartTime'], ascending=False, inplace=True)
+    return df

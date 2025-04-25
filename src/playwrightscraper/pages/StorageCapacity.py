@@ -27,7 +27,7 @@ def on_page_load(state):
 
 def onSubmit(state):
     configuration = {
-        "headLess": False,
+        # "headLess": False,
         "targetDate": state.ondate,
         "pipeLine":  getPipeCode(state.Pipeline),
         "cycleSelector": state.Cycle

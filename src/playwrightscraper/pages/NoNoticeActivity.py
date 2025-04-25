@@ -28,7 +28,7 @@ def on_page_load(state):
 def onSubmit(state):
     LocationDict = {"DRN": "drn", "PIN": "pin"}
     configuration = {
-        "headLess": False,
+        # "headLess": False,
         "targetDate": state.ondate,
         "fileType": LocationDict.get(state.Location, "error"),
         "pipeLine":  getPipeCode(state.Pipeline),

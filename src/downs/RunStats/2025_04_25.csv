@@ -1,0 +1,7 @@
+Rundate,ScrapeType,Pipeline,Cycle,TargetDate,StartTime,EndTime,status,Arguments
+04/25/2025,PointCapacity,HORZ,INTRADAY 3,04/25/2025,00:34:13,00:34:26,Success,{'fileType': 'del'}
+04/25/2025,StorageCapacity,TGPD,INTRADAY 3,04/25/2025,00:37:42,00:38:02,Success,
+04/25/2025,StorageCapacity,TGPD,EVENING,04/01/2025,00:41:18,00:41:28,Success,
+04/25/2025,StorageCapacity,SNG,INTRADAY 3,04/25/2025,00:44:31,00:44:43,Success,
+04/25/2025,SegmentCapacity,HORZ,INTRADAY 3,04/02/2025,01:10:51,01:11:01,Success,
+04/25/2025,SegmentCapacity,HORZ,INTRADAY 3,04/25/2025,01:21:00,01:21:10,Success,

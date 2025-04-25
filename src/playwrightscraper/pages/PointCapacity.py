@@ -29,7 +29,7 @@ def on_page_load(state):
 def onSubmit(state):
     LocationDict = {"Delivery": "del", "Receipt": "rec"}
     configuration = {
-        "headLess": True,
+        # "headLess": True,
         "targetDate": state.ondate,
         "fileType": LocationDict.get(state.Location, "error"),
         "pipeLine":  getPipeCode(state.Pipeline),
