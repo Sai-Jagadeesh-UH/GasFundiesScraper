@@ -1,6 +1,5 @@
-cycleSelector: INTRADAY 3
-downDir: POINTCAPACITY_PATH
-fileType: rec
+downDir: NONOTICEACTIVITY_PATH
+fileType: drn
 headLess: true
 pipeGroups:
 - ARLS
