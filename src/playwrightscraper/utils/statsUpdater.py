@@ -52,7 +52,7 @@ def endStats(status: str):
                 for f in RUNSTATS_PATH.iterdir()]
     filelist.sort(key=lambda item: item[1], reverse=True)
 
-    df = pd.read_csv(filelist[0][0])
+    df = pd.read_csv(filelist[0][0]).fillna('')
 
     df.loc[len(df) - 1, 'status'] = status
     df.loc[len(df) - 1, 'EndTime'] = datetime.now().strftime(r"%H:%M:%S")

@@ -1,14 +1,26 @@
 cycleSelector: INTRADAY 3
-downDir: STORAGECAPACITY_PATH
+downDir: POINTCAPACITY_PATH
+fileType: rec
 headLess: true
 pipeGroups:
 - ARLS
+- CP
 - CIG
+- EEC
+- EPNG
+- HORZ
+- KMIL
+- KMLP
+- MEP
+- MOPC
 - NGPL
+- SGP
 - SLNG
 - SNG
 - STAG
 - TGPD
+- TCP
+- WIC
 - YGS
 pipeLine: NGPL
 targetDate: 2025-04-03
