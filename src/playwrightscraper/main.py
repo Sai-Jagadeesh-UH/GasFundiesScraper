@@ -5,8 +5,13 @@ from pathlib import Path
 from utils import getStats
 from botConfig import PATH_LIST
 from pages import StatusChecker, PointCapPage, SegmentCapPage, StorageCapPage, NoNoticeActivityPage, DataPreview
-from azurepush import pushFiles, processFiles
+from azurepush import pushFiles
+# from flask import Flask
+import gevent.pywsgi
+
 df = None
+
+# flask_app = Flask(__name__)
 
 
 def on_navigate(state, page_name: str):
@@ -65,14 +70,12 @@ pagelist = {
 gui = Gui(pages=pagelist)
 df_status = gui.add_partial(Markdown("<|{df}|table|>"))
 
-stylekit = {
-    # "color_primary": "#070beb",
-    # "color_background_light": "",
-    # "color_paper_light": "#dcdfe3"
-    # "font-size-body": "2rem"
-    # "font-size-caption": "1rem"
-}
+gui_app = gui.run(title="GasFundies", debug=False,
+                  port="8000", allow_unsafe_werkzeug=True, run_server=False)
 
-if __name__ == "__main__":
-    gui.run(title="GasFundies", dark_mode=False,
-            debug=True, port="auto", use_reloader=True, stylekit=stylekit)
+
+app_server = gevent.pywsgi.WSGIServer(('127.0.0.1', 8088), gui_app)
+app_server.serve_forever()
+# # if __name__ == "__main__":
+# gui.run(title="GasFundies", debug=False,
+#         port="8000", allow_unsafe_werkzeug=True)

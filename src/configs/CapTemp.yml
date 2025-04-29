@@ -1,5 +1,5 @@
-downDir: NONOTICEACTIVITY_PATH
-fileType: drn
+cycleSelector: INTRADAY 3
+downDir: SEGMENTCAPACITY_PATH
 headLess: true
 pipeGroups:
 - ARLS
@@ -14,12 +14,10 @@ pipeGroups:
 - MOPC
 - NGPL
 - SGP
-- SLNG
 - SNG
 - STAG
 - TGPD
 - TCP
 - WIC
-- YGS
 pipeLine: NGPL
-targetDate: 2025-04-03
+targetDate: 2025-04-16
