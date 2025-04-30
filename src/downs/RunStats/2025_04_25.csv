@@ -1,5 +1,0 @@
-Rundate,ScrapeType,Pipeline,Cycle,TargetDate,StartTime,EndTime,status,Arguments
-04/25/2025,StorageCapacity,NGPL,INTRADAY 3,04/25/2025,11:15:33,11:15:58,Success,
-04/25/2025,SegmentCapacity,NGPL,INTRADAY 3,04/25/2025,11:18:09,11:18:20,Success,
-04/25/2025,SegmentCapacity,NGPL,INTRADAY 3,04/25/2025,11:28:27,11:28:36,Success,
-04/25/2025,StorageCapacity,NGPL,INTRADAY 3,04/03/2025,11:29:34,11:29:43,Success,
