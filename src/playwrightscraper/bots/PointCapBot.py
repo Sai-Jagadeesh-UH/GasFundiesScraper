@@ -68,7 +68,8 @@ class PointCapBot:
                             log(f"Bot run {isSuccess}")
         # pushing files to adls
             endStats(isSuccess)
-            pushFiles("point")
+            if (isSuccess != "Failed"):
+                pushFiles("point")
 
             sleep(7)
 
@@ -103,7 +104,8 @@ class PointCapBot:
                             log(f"Bot run {isSuccess}")
         # pushing files to adls
             endStats(isSuccess)
-            pushFiles("point")
+            if (isSuccess != "Failed"):
+                pushFiles("point")
 
         else:
             try:
@@ -135,7 +137,8 @@ class PointCapBot:
                         finally:
                             log(f"Bot run {isSuccess}")
             endStats(isSuccess)
-            pushFiles("point")
+            if (isSuccess != "Failed"):
+                pushFiles("point")
 
     def scrapeIndividual(self):
         scrapeday = self.targetDate.strftime(r'%m%d%Y')
@@ -184,10 +187,9 @@ class PointCapBot:
                     "input#WebSplitter1_tmpl1_ContentPlaceHolder1_HeaderBTN1_btnDownload").click()
                 download = download_info.value
                 # Wait for the download process to complete and save the downloaded file somewhere
-                filename = self.pipeLine + r"_" + scrapeday + fileType.upper() + rf"_{self.cycleSelector.replace(' ','')}" + r"." + \
+                filename = self.pipeLine + r"_" + scrapeday + fileType.upper() + rf"_{self.cycleSelector.replace(' ', '')}" + r"." + \
                     download.suggested_filename.split(".", 2)[-1]
                 download.save_as(downDir / filename)
                 log(filename + " saved, pushing to blob")
-                processFiles(downDir / filename)
 
             browser.close()

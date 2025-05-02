@@ -1,5 +1,6 @@
-cycleSelector: INTRADAY 3
-downDir: SEGMENTCAPACITY_PATH
+cycleSelector: BEST AVAILABLE
+downDir: POINTCAPACITY_PATH
+fileType: del
 headLess: true
 pipeGroups:
 - ARLS
@@ -14,10 +15,12 @@ pipeGroups:
 - MOPC
 - NGPL
 - SGP
+- SLNG
 - SNG
 - STAG
 - TGPD
 - TCP
 - WIC
+- YGS
 pipeLine: NGPL
-targetDate: 2025-04-02
+targetDate: 2025-05-02

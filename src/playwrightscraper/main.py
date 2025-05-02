@@ -16,7 +16,7 @@ def on_navigate(state, page_name: str):
             with tgb.part(class_name="card"):
                 tgb.table(data="{df}", filter=True, sortable=True)
         state.df_status.update_content(state, statustable)
-        pushFiles()
+        # pushFiles()()
         return "status"
     return page_name
 
@@ -54,4 +54,5 @@ df_status = gui.add_partial(Markdown("<|{df}|table|>"))
 
 if __name__ == '__main__':
     # app.run(debug=False, threaded=True,  port=5000)
-    gui.run(title="GasFundies", debug=False, port=5000)
+    gui.run(title="GasFundies", debug=True,
+            dark_mode=False, auto_reload=True, port="auto")

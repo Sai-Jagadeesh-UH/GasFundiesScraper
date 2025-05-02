@@ -70,7 +70,8 @@ class NoNoticeActBot:
                         finally:
                             log(f"Bot run {isSuccess}")
             endStats(isSuccess)
-            pushFiles("nonotice")
+            if (isSuccess != "Failed"):
+                pushFiles("nonotice")
             sleep(7)
 
             self.fileType = "pin"
@@ -103,7 +104,8 @@ class NoNoticeActBot:
                         finally:
                             log(f"Bot run {isSuccess}")
             endStats(isSuccess)
-            pushFiles("nonotice")
+            if (isSuccess != "Failed"):
+                pushFiles("nonotice")
         else:
             try:
                 startStats("NoNoticeActivity", self)
@@ -134,7 +136,8 @@ class NoNoticeActBot:
                         finally:
                             log(f"Bot run {isSuccess}")
             endStats(isSuccess)
-            pushFiles("nonotice")
+            if (isSuccess != "Failed"):
+                pushFiles("nonotice")
 
     def scrapeIndividual(self):
         if (self.targetDate > date.today() - timedelta(days=4)):
@@ -188,6 +191,5 @@ class NoNoticeActBot:
                     download.suggested_filename.split(".", 2)[-1]
                 download.save_as(downDir / filename)
                 log(filename + " saved")
-                processFiles(downDir / filename)
 
             browser.close()

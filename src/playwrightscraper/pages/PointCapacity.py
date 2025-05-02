@@ -63,8 +63,7 @@ def onSubmit(state):
     isActive(True, state)
     notify(state, notification_type="info",
            message=f'Scrape for {configuration["cycleSelector"]} {configuration["pipeLine"]} pipeline {state.Location} on {configuration["targetDate"]} is complete')
-    pushFiles()
-    # navigate(state, "preview")
+    # pushFiles()
 
 
 def onRangeSubmit(state):
@@ -107,7 +106,7 @@ def onRangeSubmit(state):
         notify(state, notification_type="info",
                message=f'Scrape for {configuration["cycleSelector"]} {configuration["pipeLine"]} pipeline {state.Location} on {configuration["targetDate"]} is complete')
         currentdate = currentdate + timedelta(days=1)
-        pushFiles()
+        # pushFiles()
         # navigate(state, "preview")
 
 

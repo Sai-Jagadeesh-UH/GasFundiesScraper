@@ -4,6 +4,7 @@ from pathlib import Path
 from datetime import datetime, time, timedelta
 from .azureConnect import logsFolderclient, statsFolderclient, PointCapacityFolderclient, SegmentCapacityFolderclient, StorageCapacityFolderclient, NoNotceActivityFolderclient
 from botConfig import PATH_LIST
+from .dataMung import processFiles
 
 foldersDict = {
     "logs": (PATH_LIST["LOGS_PATH"], logsFolderclient),
@@ -17,20 +18,20 @@ foldersDict = {
 
 def pushFiles(key: str = "logs"):
     folpath, folclient = foldersDict[key]
+    filelist = [(f, os.path.getctime(f))
+                for f in folpath.iterdir()]
+    filelist.sort(key=lambda item: item[1], reverse=True)
+    fileclient = folclient.get_file_client(
+        filelist[0][0].name)
+
+    if (key not in ["logs", "stats"]):
+        processFiles(filelist[0][0])
     # if (datetime.now().hour > 9):
     if (datetime.now().hour):
-        filelist = [(f, os.path.getctime(f))
-                    for f in folpath.iterdir()]
-        filelist.sort(key=lambda item: item[1], reverse=True)
-        fileclient = folclient.get_file_client(
-            filelist[0][0].name)
         with open(file=filelist[0][0], mode=r"rb") as data:
             fileclient.upload_data(data=data, overwrite=True)
         log(f"{filelist[0][0].name} pushed to blob successfully")
-        # if (key != "logs"):
-        #     print(f"key is {key} writing {filelist[0][0].as_posix()}")
-        #     with open(PATH_LIST["TEMP_TXT"], 'w') as file:
-        #         file.write(f"{filelist[0][0].as_posix()}")
+
     else:
         if (key == "logs"):
             filelist = [(f, os.path.getctime(f))

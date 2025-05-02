@@ -2,10 +2,11 @@ import logging
 import os
 from datetime import datetime
 import pathlib
+from botConfig import PATH_LIST
 
 FILE_NAME = datetime.now().strftime(r"%Y_%m_%d_%H")+".log"
 
-FILE_PATH = pathlib.Path("./") / "logs" / FILE_NAME
+FILE_PATH = PATH_LIST["LOGS_PATH"] / FILE_NAME
 
 FILE_PATH.parent.mkdir(exist_ok=True, parents=True)
 

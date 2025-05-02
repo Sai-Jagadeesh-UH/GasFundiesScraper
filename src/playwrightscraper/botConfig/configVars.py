@@ -2,7 +2,7 @@ from pathlib import Path
 
 TOP_PATH = Path(__file__).parent.parent.parent
 
-LOGS_PATH = TOP_PATH.parent / r"logs"
+LOGS_PATH = TOP_PATH / r"playwrightscraper" / r"logs"
 
 CONFIGS_PATH = TOP_PATH / r"configs"
 
