@@ -48,7 +48,8 @@ pagelist = {
 gui = Gui(pages=pagelist)
 df_status = gui.add_partial(Markdown("<|{df}|table|>"))
 
-
+uiapp = gui.run(title="GasFundies", debug=False,
+                dark_mode=False, run_server=False)
 # gui.run(title="GasFundies", debug=False,
 #         allow_unsafe_werkzeug=True, run_server=False)
 

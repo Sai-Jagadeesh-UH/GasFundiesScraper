@@ -12,12 +12,12 @@ FILE_PATH.parent.mkdir(exist_ok=True, parents=True)
 
 logging.basicConfig(filename=str(FILE_PATH),
                     filemode='a', format='%(asctime)s, %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
-                    level=logging.INFO, datefmt='%m/%d/%Y %I:%M:%S %p')
+                    level=logging.WARNING, datefmt='%m/%d/%Y %I:%M:%S %p')
 
 
 def log(msg: str):
     print(msg)
-    logging.info(msg)
+    logging.warning(msg)
 
 
 if __name__ == "__main__":
