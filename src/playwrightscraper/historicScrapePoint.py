@@ -1,8 +1,7 @@
 from datetime import date, timedelta
-from pages.pageVars import CYCLES
-from bots import PointCapBot, SegmentCapBot, StorageCapBot, NoNoticeActBot
-from botConfig import setPointCapConfig, setSegmentCapConfig, setStorageCapConfig, setNoNoticeActConfig
-from pages.pageVars import getPipeCode, POINT_PIPES, SEGMENT_PIPES, STORAGE_PIPES, NO_NOTICE_PIPES
+from bots import PointCapBot
+from botConfig import setPointCapConfig
+from pages.pageVars import getPipeCode, POINT_PIPES
 from utils import log
 
 if __name__ == '__main__':
