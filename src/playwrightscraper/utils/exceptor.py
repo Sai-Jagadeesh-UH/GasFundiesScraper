@@ -1,5 +1,5 @@
 import sys
-from .logger import logging
+from .logger import logError, log
 
 
 def eror_detailed(error, error_details: sys):
@@ -7,7 +7,7 @@ def eror_detailed(error, error_details: sys):
     er_fname = error_tb.tb_frame.f_code.co_filename
 
     error_msg = f'''\n Error occured in {er_fname} \n at line {error_tb.tb_lineno} \n with message: {str(error)}\n'''
-    logging.error(error_msg)
+    log(error_msg)
     return error_msg
 
 

@@ -12,6 +12,7 @@ logs/
 **/azureConnection.yml
 checker.py
 **/downs/
+transit.txt
 
 
 # Byte-compiled / optimized / DLL files

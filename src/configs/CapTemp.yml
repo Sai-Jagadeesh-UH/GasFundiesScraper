@@ -1,7 +1,7 @@
 cycleSelector: BEST AVAILABLE
 downDir: POINTCAPACITY_PATH
 fileType: del
-headLess: true
+headLess: false
 pipeGroups:
 - ARLS
 - CP
@@ -23,4 +23,4 @@ pipeGroups:
 - WIC
 - YGS
 pipeLine: MOPC
-targetDate: 2025-05-02
+targetDate: 2025-05-03

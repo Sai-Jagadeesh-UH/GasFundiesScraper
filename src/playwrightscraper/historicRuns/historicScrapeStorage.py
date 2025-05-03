@@ -4,7 +4,8 @@ from botConfig import setStorageCapConfig
 from pages.pageVars import getPipeCode, STORAGE_PIPES
 from utils import log
 
-if __name__ == '__main__':
+
+def storageHistoric():
 
     log("starting Historic scrapes")
 

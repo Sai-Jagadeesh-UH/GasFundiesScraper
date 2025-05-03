@@ -4,7 +4,8 @@ from botConfig import setSegmentCapConfig
 from pages.pageVars import getPipeCode, SEGMENT_PIPES
 from utils import log
 
-if __name__ == '__main__':
+
+def segmentHistoric():
 
     log("starting Historic scrapes")
 

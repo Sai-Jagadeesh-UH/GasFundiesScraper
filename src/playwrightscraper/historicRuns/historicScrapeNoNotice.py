@@ -4,7 +4,8 @@ from botConfig import setNoNoticeActConfig
 from pages.pageVars import getPipeCode,  NO_NOTICE_PIPES
 from utils import log
 
-if __name__ == '__main__':
+
+def nonoticeHistoric():
 
     log("starting Historic scrapes")
 

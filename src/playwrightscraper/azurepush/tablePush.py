@@ -1,7 +1,7 @@
 from datetime import datetime
 import pyodbc
 import pandas as pd
-connectionString = "Driver={ODBC Driver 17 for SQL Server};Server=tcp:sqlgfpipeprod.database.windows.net,1433;Database=sqldbgfpipeprod;Uid=PythonAppUser;Pwd={bIpvif-vabqub-benga3};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
+connectionString = "Driver={ODBC Driver 18 for SQL Server};Server=tcp:sqlgfpipeprod.database.windows.net,1433;Database=sqldbgfpipeprod;Uid=PythonAppUser;Pwd={bIpvif-vabqub-benga3};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
 
 
 def pushSegmentCap(df: pd.DataFrame):

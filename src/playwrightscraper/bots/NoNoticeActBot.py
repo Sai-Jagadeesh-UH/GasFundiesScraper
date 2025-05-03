@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright
 from pathlib import Path
 from datetime import date, timedelta
 from time import sleep
-from utils import log
+from utils import log, logError
 from botConfig import NoNoticeActConfig, PATH_LIST
 from utils import Custom_Error, startStats, endStats
 import sys
@@ -45,33 +45,37 @@ class NoNoticeActBot:
                 startStats("NoNoticeActivity", self)
                 self.scrapeIndividual()
             except Exception:
-                log(
-                    f"something went wrong at {self.targetDate} {self.fileType} retrying[1].....")
                 sleep(5)
                 try:
                     self.scrapeIndividual()
                 except Exception:
-                    log(
-                        f"something went wrong at {self.targetDate} {self.fileType} retrying[2].....")
                     sleep(5)
                     try:
                         self.scrapeIndividual()
                     except Exception:
-                        log(
-                            f"something went wrong at {self.targetDate} {self.fileType} retrying[3].....")
                         sleep(5)
                         try:
                             self.scrapeIndividual()
                         except Exception as e:
-                            log(
-                                f"something went wrong at {self.targetDate} {self.fileType} Errored " + "x"*30)
                             isSuccess = "Failed"
-                            raise Custom_Error(e, sys)
-                        finally:
-                            log(f"Bot run {isSuccess}")
+                            try:
+                                raise Custom_Error(e, sys)
+                            except:
+                                logError(
+                                    f" NoNoticeActivity {self.pipeLine} {self.fileType} failed for {self.targetDate}")
+            log(f"Bot run {isSuccess}")
             endStats(isSuccess)
             if (isSuccess != "Failed"):
-                pushFiles("nonotice")
+                try:
+                    pushFiles("nonotice")
+                except Exception as e:
+                    try:
+                        raise Custom_Error(e, sys)
+                    except:
+                        logError("Cloud Push Error-------------------")
+                        logError(
+                            f" NoNoticeActivity {self.pipeLine} {self.fileType} failed for {self.targetDate}")
+
             sleep(7)
 
             self.fileType = "pin"
@@ -79,65 +83,74 @@ class NoNoticeActBot:
                 startStats("NoNoticeActivity", self)
                 self.scrapeIndividual()
             except Exception:
-                log(
-                    f"something went wrong at {self.targetDate} {self.fileType} retrying[1].....")
                 sleep(5)
                 try:
                     self.scrapeIndividual()
                 except Exception:
-                    log(
-                        f"something went wrong at {self.targetDate} {self.fileType} retrying[2].....")
                     sleep(5)
                     try:
                         self.scrapeIndividual()
                     except Exception:
-                        log(
-                            f"something went wrong at {self.targetDate} {self.fileType} retrying[3].....")
                         sleep(5)
                         try:
                             self.scrapeIndividual()
                         except Exception as e:
-                            log(
-                                f"something went wrong at {self.targetDate} {self.fileType} Errored " + "x"*30)
                             isSuccess = "Failed"
-                            raise Custom_Error(e, sys)
-                        finally:
-                            log(f"Bot run {isSuccess}")
+                            try:
+                                raise Custom_Error(e, sys)
+                            except:
+                                logError(
+                                    f" NoNoticeActivity {self.pipeLine} {self.fileType} failed for {self.targetDate}")
+
+            log(f"Bot run {isSuccess}")
             endStats(isSuccess)
             if (isSuccess != "Failed"):
-                pushFiles("nonotice")
+                try:
+                    pushFiles("nonotice")
+                except Exception as e:
+                    try:
+                        raise Custom_Error(e, sys)
+                    except:
+                        logError("Cloud Push Error-------------------")
+                        logError(
+                            f" NoNoticeActivity {self.pipeLine} {self.fileType} failed for {self.targetDate}")
+
         else:
             try:
                 startStats("NoNoticeActivity", self)
                 self.scrapeIndividual()
             except Exception:
-                log(
-                    f"something went wrong at {self.targetDate} {self.fileType} retrying[1].....")
                 sleep(5)
                 try:
                     self.scrapeIndividual()
                 except Exception:
-                    log(
-                        f"something went wrong at {self.targetDate} {self.fileType} retrying[2].....")
                     sleep(5)
                     try:
                         self.scrapeIndividual()
                     except Exception:
-                        log(
-                            f"something went wrong at {self.targetDate} {self.fileType} retrying[3].....")
                         sleep(5)
                         try:
                             self.scrapeIndividual()
                         except Exception as e:
-                            log(
-                                f"something went wrong at {self.targetDate} {self.fileType} Errored " + "x"*30)
                             isSuccess = "Failed"
-                            raise Custom_Error(e, sys)
-                        finally:
-                            log(f"Bot run {isSuccess}")
+                            try:
+                                raise Custom_Error(e, sys)
+                            except:
+                                logError(
+                                    f" NoNoticeActivity {self.pipeLine} {self.fileType} failed for {self.targetDate}")
+
+            log(f"Bot run {isSuccess}")
             endStats(isSuccess)
             if (isSuccess != "Failed"):
-                pushFiles("nonotice")
+                try:
+                    pushFiles("nonotice")
+                except Exception as e:
+                    try:
+                        raise Custom_Error(e, sys)
+                    except:
+                        logError("Cloud Push Error-------------------")
+                        logError(
+                            f" NoNoticeActivity {self.pipeLine} {self.fileType} failed for {self.targetDate}")
 
     def scrapeIndividual(self):
         if (self.targetDate > date.today() - timedelta(days=4)):

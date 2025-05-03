@@ -4,7 +4,8 @@ from botConfig import setPointCapConfig
 from pages.pageVars import getPipeCode, POINT_PIPES
 from utils import log
 
-if __name__ == '__main__':
+
+def pointHistoric():
 
     log("starting Historic scrapes")
 

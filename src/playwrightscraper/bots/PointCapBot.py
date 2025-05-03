@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright
 import pathlib
 from datetime import date
 from time import sleep
-from utils import log
+from utils import log, logError
 from botConfig import PointCapConfig, PATH_LIST
 from utils import Custom_Error, startStats, endStats
 import sys
@@ -42,34 +42,37 @@ class PointCapBot:
                 startStats("PointCapacity", self)
                 self.scrapeIndividual()
             except Exception:
-                log(
-                    f"something went wrong at {self.targetDate} {self.fileType} retrying[1].....")
                 sleep(5)
                 try:
                     self.scrapeIndividual()
                 except Exception:
-                    log(
-                        f"something went wrong at {self.targetDate} {self.fileType} retrying[2].....")
                     sleep(5)
                     try:
                         self.scrapeIndividual()
                     except Exception:
-                        log(
-                            f"something went wrong at {self.targetDate} {self.fileType} retrying[3].....")
                         sleep(5)
                         try:
                             self.scrapeIndividual()
                         except Exception as e:
-                            log(
-                                f"something went wrong at {self.targetDate} {self.fileType} Errored " + "x"*30)
                             isSuccess = "Failed"
-                            raise Custom_Error(e, sys)
-                        finally:
-                            log(f"Bot run {isSuccess}")
-        # pushing files to adls
+                            try:
+                                raise Custom_Error(e, sys)
+                            except:
+                                logError(
+                                    f" PointCapacity {self.pipeLine} {self.fileType} failed for {self.targetDate}")
+
+            log(f"Bot run {isSuccess}")
             endStats(isSuccess)
             if (isSuccess != "Failed"):
-                pushFiles("point")
+                try:
+                    pushFiles("point")
+                except Exception as e:
+                    try:
+                        raise Custom_Error(e, sys)
+                    except:
+                        logError("Cloud Push Error-------------------")
+                        logError(
+                            f" PointCapacity {self.pipeLine} {self.fileType} failed for {self.targetDate}")
 
             sleep(7)
 
@@ -78,67 +81,74 @@ class PointCapBot:
                 startStats("PointCapacity", self)
                 self.scrapeIndividual()
             except Exception:
-                log(
-                    f"something went wrong at {self.targetDate} {self.fileType} retrying[1].....")
                 sleep(5)
                 try:
                     self.scrapeIndividual()
                 except Exception:
-                    log(
-                        f"something went wrong at {self.targetDate} {self.fileType} retrying[2].....")
                     sleep(5)
                     try:
                         self.scrapeIndividual()
                     except Exception:
-                        log(
-                            f"something went wrong at {self.targetDate} {self.fileType} retrying[3].....")
                         sleep(5)
                         try:
                             self.scrapeIndividual()
                         except Exception as e:
-                            log(
-                                f"something went wrong at {self.targetDate} {self.fileType} Errored " + "x"*30)
                             isSuccess = "Failed"
-                            raise Custom_Error(e, sys)
-                        finally:
-                            log(f"Bot run {isSuccess}")
-        # pushing files to adls
+                            try:
+                                raise Custom_Error(e, sys)
+                            except:
+                                logError(
+                                    f" PointCapacity {self.pipeLine} {self.fileType} failed for {self.targetDate}")
+
+            log(f"Bot run {isSuccess}")
             endStats(isSuccess)
             if (isSuccess != "Failed"):
-                pushFiles("point")
+                try:
+                    pushFiles("point")
+                except Exception as e:
+                    try:
+                        raise Custom_Error(e, sys)
+                    except:
+                        logError("Cloud Push Error-------------------")
+                        logError(
+                            f" PointCapacity {self.pipeLine} {self.fileType} failed for {self.targetDate}")
 
         else:
             try:
                 startStats("PointCapacity", self)
                 self.scrapeIndividual()
             except Exception:
-                log(
-                    f"something went wrong at {self.targetDate} {self.fileType} retrying[1].....")
                 sleep(5)
                 try:
                     self.scrapeIndividual()
                 except Exception:
-                    log(
-                        f"something went wrong at {self.targetDate} {self.fileType} retrying[2].....")
                     sleep(5)
                     try:
                         self.scrapeIndividual()
                     except Exception:
-                        log(
-                            f"something went wrong at {self.targetDate} {self.fileType} retrying[3].....")
                         sleep(5)
                         try:
                             self.scrapeIndividual()
                         except Exception as e:
-                            log(
-                                f"something went wrong at {self.targetDate} {self.fileType} Errored " + "x"*30)
                             isSuccess = "Failed"
-                            raise Custom_Error(e, sys)
-                        finally:
-                            log(f"Bot run {isSuccess}")
+                            try:
+                                raise Custom_Error(e, sys)
+                            except:
+                                logError(
+                                    f" PointCapacity {self.pipeLine} {self.fileType} failed for {self.targetDate}")
+
+            log(f"Bot run {isSuccess}")
             endStats(isSuccess)
             if (isSuccess != "Failed"):
-                pushFiles("point")
+                try:
+                    pushFiles("point")
+                except Exception as e:
+                    try:
+                        raise Custom_Error(e, sys)
+                    except:
+                        logError("Cloud Push Error-------------------")
+                        logError(
+                            f" PointCapacity {self.pipeLine} {self.fileType} failed for {self.targetDate}")
 
     def scrapeIndividual(self):
         scrapeday = self.targetDate.strftime(r'%m%d%Y')

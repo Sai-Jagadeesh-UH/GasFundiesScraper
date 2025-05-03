@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright
 import pathlib
 from datetime import date
 from time import sleep
-from utils import log
+from utils import log, logError
 from botConfig import StorageCapConfig, PATH_LIST
 from utils import Custom_Error, startStats, endStats
 import sys
@@ -45,33 +45,36 @@ class StorageCapBot:
             startStats("StorageCapacity", self)
             self.scrapeIndividual()
         except Exception:
-            log(
-                f"something went wrong at {self.targetDate} retrying[1].....")
             sleep(5)
             try:
                 self.scrapeIndividual()
             except Exception:
-                log(
-                    f"something went wrong at {self.targetDate} retrying[2].....")
                 sleep(5)
                 try:
                     self.scrapeIndividual()
                 except Exception:
-                    log(
-                        f"something went wrong at {self.targetDate} retrying[3].....")
                     sleep(5)
                     try:
                         self.scrapeIndividual()
                     except Exception as e:
-                        log(
-                            f"something went wrong at {self.targetDate} Errored " + "x"*30)
-                        isSuccess = "Failed"
-                        raise Custom_Error(e, sys)
-                    finally:
-                        log(f"Bot run {isSuccess}")
+                        try:
+                            raise Custom_Error(e, sys)
+                        except:
+                            logError(
+                                f" StorageCapacity {self.pipeLine} failed for {self.targetDate}")
+
+        log(f"Bot run {isSuccess}")
         endStats(isSuccess)
         if (isSuccess != "Failed"):
-            pushFiles("storage")
+            try:
+                pushFiles("storage")
+            except Exception as e:
+                try:
+                    raise Custom_Error(e, sys)
+                except:
+                    logError("Cloud Push Error-------------------")
+                    logError(
+                        f" StorageCapacity {self.pipeLine} failed for {self.targetDate}")
 
     def scrapeIndividual(self):
         scrapeday = self.targetDate.strftime(r'%m%d%Y')
