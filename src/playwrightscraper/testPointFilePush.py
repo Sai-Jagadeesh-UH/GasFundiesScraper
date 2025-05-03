@@ -8,7 +8,7 @@ if __name__ == '__main__':
     configuration = {
         "targetDate": date.today(),
         "fileType": "del",
-        "pipeLine":  "NGPL",
+        "pipeLine":  "MOPC",
         "cycleSelector": CYCLES[0]
     }
     setPointCapConfig(**configuration)

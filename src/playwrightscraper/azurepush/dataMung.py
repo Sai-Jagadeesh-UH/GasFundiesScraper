@@ -17,13 +17,13 @@ def mungPointFiles(filename):
         df[['Design Capacity', 'Operating Capacity', 'Total Scheduled Quantity', 'Operationally Available Capacity']] = df[[
             'Design Capacity', 'Operating Capacity', 'Total Scheduled Quantity', 'Operationally Available Capacity']].fillna(0)
         df['Design Capacity'] = df['Design Capacity'].apply(
-            lambda x:  int(str(x).replace(',', '')))
+            lambda x:  int(float(str(x).replace(',', ''))))
         df['Operating Capacity'] = df['Operating Capacity'].apply(
-            lambda x:  int(str(x).replace(',', '')))
+            lambda x:  int(float(str(x).replace(',', ''))))
         df['Total Scheduled Quantity'] = df['Total Scheduled Quantity'].apply(
-            lambda x:  int(str(x).replace(',', '')))
+            lambda x:  int(float(str(x).replace(',', ''))))
         df['Operationally Available Capacity'] = df['Operationally Available Capacity'].apply(
-            lambda x:  int(str(x).replace(',', '')))
+            lambda x:  int(float(str(x).replace(',', ''))))
         df.fillna('', inplace=True)
         collist = df.columns.to_list()
         df["TSP Name"] = pipeName
@@ -56,13 +56,13 @@ def mungSegmentFile(filename):
         df[['Design Capacity', 'Operating Capacity', 'Total Scheduled Quantity', 'Operationally Available Capacity']] = df[[
             'Design Capacity', 'Operating Capacity', 'Total Scheduled Quantity', 'Operationally Available Capacity']].fillna(0)
         df['Design Capacity'] = df['Design Capacity'].apply(
-            lambda x:  int(str(x).replace(',', '')))
+            lambda x:  int(float(str(x).replace(',', ''))))
         df['Operating Capacity'] = df['Operating Capacity'].apply(
-            lambda x:  int(str(x).replace(',', '')))
+            lambda x:  int(float(str(x).replace(',', ''))))
         df['Total Scheduled Quantity'] = df['Total Scheduled Quantity'].apply(
-            lambda x:  int(str(x).replace(',', '')))
+            lambda x:  int(float(str(x).replace(',', ''))))
         df['Operationally Available Capacity'] = df['Operationally Available Capacity'].apply(
-            lambda x:  int(str(x).replace(',', '')))
+            lambda x:  int(float(str(x).replace(',', ''))))
         df.fillna('', inplace=True)
         collist = df.columns.to_list()
         df["TSP Name"] = pipeName
@@ -90,13 +90,13 @@ def mungStorageFiles(filename):
         df[['Design Capacity', 'Operating Capacity', 'Total Scheduled Quantity', 'Operationally Available Capacity']] = df[[
             'Design Capacity', 'Operating Capacity', 'Total Scheduled Quantity', 'Operationally Available Capacity']].fillna(0)
         df['Design Capacity'] = df['Design Capacity'].apply(
-            lambda x:  int(str(x).replace(',', '')))
+            lambda x:  int(float(str(x).replace(',', ''))))
         df['Operating Capacity'] = df['Operating Capacity'].apply(
-            lambda x:  int(str(x).replace(',', '')))
+            lambda x:  int(float(str(x).replace(',', ''))))
         df['Total Scheduled Quantity'] = df['Total Scheduled Quantity'].apply(
-            lambda x:  int(str(x).replace(',', '')))
+            lambda x:  int(float(str(x).replace(',', ''))))
         df['Operationally Available Capacity'] = df['Operationally Available Capacity'].apply(
-            lambda x:  int(str(x).replace(',', '')))
+            lambda x:  int(float(str(x).replace(',', ''))))
         df.fillna('', inplace=True)
         collist = df.columns.to_list()
         df["TSP Name"] = pipeName

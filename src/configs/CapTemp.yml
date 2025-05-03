@@ -22,5 +22,5 @@ pipeGroups:
 - TCP
 - WIC
 - YGS
-pipeLine: NGPL
+pipeLine: MOPC
 targetDate: 2025-05-02
