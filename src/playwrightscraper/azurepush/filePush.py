@@ -1,10 +1,11 @@
 import os
-from utils import log
+from utils import log, logError, Custom_Error
 from pathlib import Path
 from datetime import datetime, time, timedelta
 from .azureConnect import logsFolderclient, statsFolderclient, PointCapacityFolderclient, SegmentCapacityFolderclient, StorageCapacityFolderclient, NoNotceActivityFolderclient
 from botConfig import PATH_LIST
 from .dataMung import processFiles
+import sys
 
 foldersDict = {
     "logs": (PATH_LIST["LOGS_PATH"], logsFolderclient),
@@ -17,47 +18,43 @@ foldersDict = {
 
 
 def pushFiles(key: str = "logs"):
-    folpath, folclient = foldersDict[key]
-    filelist = [(f, os.path.getctime(f))
-                for f in folpath.iterdir()]
-    filelist.sort(key=lambda item: item[1], reverse=True)
-    fileclient = folclient.get_file_client(
-        filelist[0][0].name)
+    try:
+        folpath, folclient = foldersDict[key]
+        filelist = [(f, os.path.getctime(f))
+                    for f in folpath.iterdir()]
+        filelist.sort(key=lambda item: item[1], reverse=True)
+        fileclient = folclient.get_file_client(
+            filelist[0][0].name)
 
-    if (key not in ["logs", "stats"]):
-        processFiles(filelist[0][0])
-    # if (datetime.now().hour > 9):
-    if (datetime.now().hour):
+        if (key not in ["logs", "stats"]):
+            processFiles(filelist[0][0])
+
         with open(file=filelist[0][0], mode=r"rb") as data:
             fileclient.upload_data(data=data, overwrite=True)
         log(f"{filelist[0][0].name} pushed to blob successfully")
 
-    else:
-        if (key == "logs"):
-            filelist = [(f, os.path.getctime(f))
-                        for f in folpath.iterdir()]
-            filelist.sort(key=lambda item: item[1], reverse=True)
-            for i in filelist[1:]:
-                fileclient = folclient.get_file_client(i[0].name)
-                with open(file=i[0], mode=r"rb") as data:
-                    fileclient.upload_data(data=data, overwrite=True)
-                log(f"{i[0].name} pushed to blob successfully")
-                if (datetime.now().hour < 9):
-                    i[0].unlink(missing_ok=True)
-        else:
-            for i in folpath.iterdir():
-                fileclient = folclient.get_file_client(i.name)
-                with open(file=i, mode=r"rb") as data:
-                    fileclient.upload_data(data=data, overwrite=True)
-                log(f"{i.name} pushed to blob successfully")
-                if (datetime.now().hour < 9):
-                    i.unlink(missing_ok=True)
+    except Exception as e:
+        try:
+            raise Custom_Error(e, sys)
+        except:
+            logError(
+                f"Something went wrog while pushing {key} {filelist[0][0].name}")
 
 
-def pushStats(statfile):
-    _, folclient = foldersDict["stats"]
-    fileclient = folclient.get_file_client(statfile.name)
-    with open(file=statfile, mode=r"rb") as data:
-        fileclient.upload_data(data=data, overwrite=True)
-    log(f"{statfile.name} pushed to blob successfully")
-    statfile.unlink(missing_ok=True)
+def wipeFiles(key: str = "logs"):
+    try:
+        folpath, folclient = foldersDict[key]
+        for i in folpath.iterdir():
+            fileclient = folclient.get_file_client(i.name)
+            with open(file=i, mode=r"rb") as data:
+                fileclient.upload_data(data=data, overwrite=True)
+            log(f"{i.name} pushed to blob successfully")
+            # if (datetime.now().hour < 9):
+            if (datetime.now().strftime("%b") not in i.name):
+                i.unlink(missing_ok=True)
+    except Exception as e:
+        try:
+            raise Custom_Error(e, sys)
+        except:
+            logError(
+                f"Something went wrog while pushing {key}")

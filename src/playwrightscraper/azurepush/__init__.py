@@ -1,2 +1,2 @@
-from .filePush import pushFiles, pushStats
+from .filePush import pushFiles, wipeFiles
 from .dataMung import processFiles

@@ -24,14 +24,6 @@ class SegmentCapBot:
             log(f"targetDate missing setting it to {date.today()}")
             self.targetDate = date.today()
 
-        if (not hasattr(self, "cycleSelector")):
-            if (self.targetDate < date.today()):
-                log(f"Cycle Selector is missing setting it to INTRADAY 3")
-                self.cycleSelector = "INTRADAY 3"
-            else:
-                log(f"Cycle Selector is missing setting it to EVENING")
-                self.cycleSelector = "EVENING"
-
         pathlib.Path(self.downDir).mkdir(exist_ok=True)
         self.url = rf"https://pipeline2.kindermorgan.com/Capacity/OpAvailSegment.aspx?code={self.pipeLine}"
 
