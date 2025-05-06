@@ -6,7 +6,7 @@ from botConfig import setPointCapConfig
 
 if __name__ == '__main__':
     configuration = {
-        "headLess": False,
+        "headLess": True,
         "targetDate": date.today(),
         "fileType": "del",
         "pipeLine":  "MOPC",

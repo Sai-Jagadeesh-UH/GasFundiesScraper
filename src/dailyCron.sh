@@ -14,6 +14,3 @@ source "$VENV_PATH/bin/activate"
 
 # Run the Python script
 python "$PYTHON_SCRIPT"
-
-
-echo "CRON run complete  $(date)" >> "$LOG_FILE"

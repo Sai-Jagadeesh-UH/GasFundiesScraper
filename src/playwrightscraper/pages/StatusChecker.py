@@ -1,6 +1,6 @@
 from taipy.gui import notify
 import taipy.gui.builder as tgb
-from utils import getStats
+# from utils import getStats
 
 
 # df = getStats()

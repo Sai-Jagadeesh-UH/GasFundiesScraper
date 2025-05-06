@@ -2,7 +2,7 @@ from taipy.gui import Gui, Markdown
 import taipy.gui.builder as tgb
 from utils import getStats
 from botConfig import PATH_LIST
-from pages import StatusChecker, PointCapPage, SegmentCapPage, StorageCapPage, NoNoticeActivityPage, DataPreview
+from pages import StatusChecker, PointCapPage, SegmentCapPage, StorageCapPage, NoNoticeActivityPage
 from azurepush import pushFiles
 # from flask import Flask
 
@@ -48,12 +48,13 @@ pagelist = {
 gui = Gui(pages=pagelist)
 df_status = gui.add_partial(Markdown("<|{df}|table|>"))
 
-uiapp = gui.run(title="GasFundies", debug=False,
-                dark_mode=False, run_server=False)
+app = gui.run(title="GasFundies", debug=False,
+              dark_mode=False, run_server=False, run_in_thread=True)
 # gui.run(title="GasFundies", debug=False,
 #         allow_unsafe_werkzeug=True, run_server=False)
 
 if __name__ == '__main__':
     # app.run(debug=False, threaded=True,  port=5000)
-    gui.run(title="GasFundies", debug=True,
-            dark_mode=False, auto_reload=True, port="auto")
+    pass
+    # gui.run(title="GasFundies", debug=True,
+    #         dark_mode=False, auto_reload=True, port="auto")
